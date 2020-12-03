@@ -1,6 +1,6 @@
-import random
+import random, datetime
 
-BIT_LEN = 2048
+BIT_LEN = 8
 TEST_PRIME_LEN = 50
 TEST_COUNT_RABIN_ATTEMPT = 20
 
@@ -20,7 +20,8 @@ class KeyGenerating:
         return list_with_test
 
     def __generating_number(self) -> int:
-        return random.randrange(pow(2, self.bit_len - 1) + 1, pow(2, self.bit_len) - 1)
+        random.seed(datetime.datetime.now())
+        return random.randint(pow(2, self.bit_len - 1) + 1, pow(2, self.bit_len) - 1)
 
     def __generating_prime_list(self) -> list:
         count = 2
@@ -35,27 +36,42 @@ class KeyGenerating:
         return output_prime_list
 
     def test_low_level_prime(self, test_number: int) -> bool:
-        is_prime_number = False
+        is_prime_number = True
 
         for prime_number in self.test_prime_list:
             if test_number % prime_number == 0 and pow(prime_number, 2) <= test_number:
-                is_prime_number = True
+                is_prime_number = False
                 break
         return is_prime_number
+
+    def test_rabin_miller(self, test_number: int) -> bool:
+        component = test_number - 1
+        max_divisions_by_two = 0
+
+        while component % 2 == 0:
+            component = component // 2
+            max_divisions_by_two += 1
+        for trials in range(5):
+            rand_range = random.randrange(2, test_number - 1)
+            pow_number = pow(rand_range, component, test_number)
+            if pow_number != 1:
+                index = 0
+                while pow_number != (test_number - 1):
+                    if index == max_divisions_by_two - 1:
+                        return False
+                    else:
+                        index = + 1
+                        pow_number = pow(pow_number, 2) % test_number
+            return True
 
     def generate_key(self) -> int:
         is_failed_test = True
         test_number = None
         while is_failed_test:
             test_number = self.__generating_number()
-            print('new')
             for test in KeyGenerating.get_test():
-                if test(self, test_number):
+                if not test(self, test_number):
                     break
             else:
                 is_failed_test = False
         return test_number
-
-
-g = KeyGenerating()
-print(g.generate_key())
