@@ -1,4 +1,4 @@
-2020-12-05 16:24:41,535 - [INFO] - __main__ - Program was starting...
-2020-12-05 16:24:42,812 - [INFO] - __main__ - export from key_capacity: public key:{'key': [18209, 233]}	private key:{'key': [18209, 77]}
-2020-12-05 16:24:45,082 - [INFO] - __main__ - user text: 9529,10520,1 with option 1
-2020-12-05 16:24:45,082 - [INFO] - __main__ - Result: ['f', 'h', 'a']
+2020-12-05 21:10:21,954 - [INFO] - __main__ - Program was starting...
+2020-12-05 21:10:24,845 - [INFO] - __main__ - export from key_capacity: public key:{'key': [48319, 233]}	private key:{'key': [48319, 32057]}
+2020-12-05 21:10:27,763 - [INFO] - __main__ - user text: 3685,45719,28763,28763,34590 with option 1
+2020-12-05 21:10:27,813 - [INFO] - __main__ - Result: hello

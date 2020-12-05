@@ -2,9 +2,9 @@ import random, datetime
 
 from log import Logging
 
-BIT_LEN = 2048
+BIT_LEN = 8
 TEST_PRIME_LEN = 50
-TEST_COUNT_RABIN_ATTEMPT = 20
+TEST_COUNT_RABIN_ATTEMPT = 1
 
 logger = Logging(name=__name__).get_logger()
 
@@ -57,7 +57,7 @@ class KeyGenerating:
         while component % 2 == 0:
             component = component // 2
             max_divisions_by_two += 1
-        for trials in range(5):
+        for trials in range(TEST_COUNT_RABIN_ATTEMPT):
             rand_range = random.randrange(2, test_number - 1)
             pow_number = pow(rand_range, component, test_number)
             if pow_number != 1:

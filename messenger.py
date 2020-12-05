@@ -77,9 +77,9 @@ class Messenger:
                 self.output.append(function[case](*parameters[case]))
             else:
                 print('Please choice 0 or 1 option')
-        print('Result: {}'.format(self.output))
+        print('Result: {}'.format(''.join(self.output)))
         print('Result with separator: {}'.format(SEPARATOR.join(self.output)))
-        logger.info('Result: {}'.format(self.output))
+        logger.info('Result: {}'.format(''.join(self.output)))
 
 
 if __name__ == '__main__':
