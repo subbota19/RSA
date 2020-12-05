@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0dadd0ae-38fc-460f-aaec-e2ca62f20481" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/key_generating.py" beforeDir="false" afterPath="$PROJECT_DIR$/key_generator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rsa_implementation.py" beforeDir="false" afterPath="$PROJECT_DIR$/rsa_implementation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -110,7 +112,7 @@
       <updated>1607022052096</updated>
       <workItem from="1607022053203" duration="8729000" />
       <workItem from="1607106725461" duration="1513000" />
-      <workItem from="1607111395761" duration="15800000" />
+      <workItem from="1607111395761" duration="16137000" />
     </task>
     <servers />
   </component>
