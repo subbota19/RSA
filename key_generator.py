@@ -2,7 +2,7 @@ import random, datetime
 
 from log import Logging
 
-BIT_LEN = 8
+BIT_LEN = 2048
 TEST_PRIME_LEN = 50
 TEST_COUNT_RABIN_ATTEMPT = 20
 
