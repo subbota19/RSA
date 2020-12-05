@@ -1,4 +1,4 @@
-from key_generating import KeyGenerating
+from key_generator import KeyGenerating
 import yaml
 
 HOME_KEY_DIR = "/home/yauheni/PyCharmProjects/student/security/RSA/key_capacity"
