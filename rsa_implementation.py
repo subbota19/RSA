@@ -1,7 +1,11 @@
-from key_generator import KeyGenerating
 import yaml
+from key_generator import KeyGenerating
+
+from log import Logging
 
 HOME_KEY_DIR = "/home/yauheni/PyCharmProjects/student/security/RSA/key_capacity"
+
+logger = Logging(name=__name__).get_logger()
 
 
 class RSA:
@@ -28,7 +32,7 @@ class RSA:
 
     @staticmethod
     def generate_private_exponent(e: int, check_number: int) -> int:
-
+        logger.info('start generate_private_exponent')
         u1, u2, u3 = 1, 0, e
         v1, v2, v3 = 0, 1, check_number
 
@@ -45,6 +49,7 @@ class RSA:
         return output_set
 
     def generate_public_exponent(self, check_number: int) -> int:
+        logger.info('start generate_public_exponent')
         e = None
         is_invalid_number = True
         while is_invalid_number:
@@ -54,11 +59,15 @@ class RSA:
         return e
 
     def run(self):
+        logger.info('new private and public keys is generating...')
+
         self.q, self.p = self.generate_diff_prime_number()
 
         self.n = self.q * self.p
 
         self.e = (self.p - 1) * (self.q - 1)
+
+        logger.info('q: {}\tp:{}\tn:{}\te:{}'.format(self.q, self.p, self.n, self.e))
 
         self.public_exponent = self.generate_public_exponent(self.e)
 
@@ -67,3 +76,5 @@ class RSA:
         self.private_exponent = self.generate_private_exponent(self.public_exponent, self.e)
 
         self.save_key(key=[self.n, self.private_exponent], file_name='private_key.yaml')
+
+        logger.info('keys is saved in key_capacity directory')

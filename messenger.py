@@ -1,16 +1,18 @@
 import yaml, os
 
 from collections import OrderedDict
+from log import Logging
 from rsa_implementation import RSA
 
 HOME_KEY_DIR = "/home/yauheni/PyCharmProjects/student/security/RSA/key_capacity"
-ALPHABET = OrderedDict({'a': 2, 'b': 3, 'c': 4, 'd': 5, 'e': 6,
-                        'f': 7, 'g': 8, 'h': 9, 'i': 10, 'j': 11,
-                        'k': 12, 'l': 13, 'm': 14, 'n': 15, 'o': 16,
-                        'p': 17, 'q': 18, 'r': 19, 's': 20, 't': 21,
-                        'u': 22, 'v': 23, 'w': 24, 'x': 25, 'y': 26,
-                        'z': 27})
+ALPHABET = OrderedDict(
+    {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6, 'g': 7, 'h': 8, 'i': 9, 'j': 10, 'k': 11, 'l': 12, 'm': 13,
+     'n': 14, 'o': 15, 'p': 16, 'q': 17, 'r': 18, 's': 19, 't': 20, 'u': 21, 'v': 22, 'w': 23, 'x': 24, 'y': 25,
+     'z': 26}
+)
 SEPARATOR = ','
+
+logger = Logging(name=__name__).get_logger()
 
 
 class Messenger:
@@ -28,13 +30,22 @@ class Messenger:
 
     @staticmethod
     def encrypt_symbol(symbol: str, n: int, e: int) -> str:
-        return str(pow(ALPHABET[symbol], e) % n)
+        try:
+            return str(pow(ALPHABET[symbol], e) % n)
+        except KeyError:
+            raise Exception('Undefined symbol - {}'.format(symbol))
 
     @staticmethod
     def decrypt_symbol(index: int, n: int, d: int) -> str:
-        return list(ALPHABET.keys())[pow(index, d) % n - 1]
+        try:
+            return list(ALPHABET.keys())[pow(index, d) % n - 1]
+        except IndexError:
+            logger.info('your private key or public key is wrong')
+            raise Exception('Decrypt error')
 
     def main(self):
+
+        logger.info('Program was starting...')
 
         is_generate = int(input('Generate new public and private key? \n 0 - no \n 1 - yes\n'))
 
@@ -44,12 +55,16 @@ class Messenger:
         public_key = self.get_key('public_key.yaml')
         private_key = self.get_key('private_key.yaml')
 
+        logger.info('export from key_capacity: public key:{}\tprivate key:{}'.format(public_key, private_key))
+
         if not public_key or not private_key:
             raise Exception('Please generate public and private keys!!!')
 
         case = int(input('Choice option:\n 0 - encrypt \n 1 - decrypt\n'))
 
         text = input('Input text:\n')
+
+        logger.info('user text: {} with option {}'.format(text, case))
 
         if case:
             text = [int(symbol) for symbol in text.split(SEPARATOR)]
@@ -62,7 +77,9 @@ class Messenger:
                 self.output.append(function[case](*parameters[case]))
             else:
                 print('Please choice 0 or 1 option')
-        print('Result: {}'.format(SEPARATOR.join(self.output)))
+        print('Result: {}'.format(self.output))
+        print('Result with separator: {}'.format(SEPARATOR.join(self.output)))
+        logger.info('Result: {}'.format(self.output))
 
 
 if __name__ == '__main__':

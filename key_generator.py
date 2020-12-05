@@ -1,8 +1,12 @@
 import random, datetime
 
+from log import Logging
+
 BIT_LEN = 8
 TEST_PRIME_LEN = 50
 TEST_COUNT_RABIN_ATTEMPT = 20
+
+logger = Logging(name=__name__).get_logger()
 
 
 class KeyGenerating:
@@ -17,9 +21,11 @@ class KeyGenerating:
         for test_name, test in cls.__dict__.items():
             if test_name.startswith('test'):
                 list_with_test.append(test)
+        logger.info('available test(-s) - {}'.format(list_with_test))
         return list_with_test
 
     def __generating_number(self) -> int:
+        logger.info('generate number with bit len - {}'.format(BIT_LEN))
         random.seed(datetime.datetime.now())
         return random.randint(pow(2, self.bit_len - 1) + 1, pow(2, self.bit_len) - 1)
 
@@ -69,9 +75,12 @@ class KeyGenerating:
         test_number = None
         while is_failed_test:
             test_number = self.__generating_number()
+            logger.info('generate number: {}'.format(test_number))
             for test in KeyGenerating.get_test():
                 if not test(self, test_number):
+                    logger.info('test - {} is failed'.format(test))
                     break
+                logger.info('test - {} is passed'.format(test))
             else:
                 is_failed_test = False
         return test_number
