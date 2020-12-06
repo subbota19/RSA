@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0dadd0ae-38fc-460f-aaec-e2ca62f20481" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/key_capacity/private_key.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/key_capacity/private_key.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/key_capacity/public_key.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/key_capacity/public_key.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/key_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/key_generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messenger.py" beforeDir="false" afterPath="$PROJECT_DIR$/messenger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rsa.log" beforeDir="false" afterPath="$PROJECT_DIR$/rsa.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +112,9 @@
       <workItem from="1607106725461" duration="1513000" />
       <workItem from="1607111395761" duration="16579000" />
       <workItem from="1607164150008" duration="14232000" />
-      <workItem from="1607186373252" duration="5563000" />
+      <workItem from="1607186373252" duration="5578000" />
+      <workItem from="1607244334802" duration="111000" />
+      <workItem from="1607286963414" duration="12000" />
     </task>
     <servers />
   </component>
